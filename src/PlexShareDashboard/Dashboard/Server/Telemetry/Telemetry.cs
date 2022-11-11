@@ -11,6 +11,7 @@ using PlexShareDashboard;
 //using PlexShareDashboard.Dashboard.Server.Persistent;
 using Dashboard.Server.Persistence;
 using Dashboard;
+using PlexShareContent.DataModels;
 
 namespace PlexShareDashboard.Dashboard.Server.Telemetry
 {

@@ -20,15 +20,15 @@ namespace PlexShareTests.DashboardTests.Summary
         /// <returns>
         ///     The appropriate chat context array
         /// </returns>
-        public static ChatThread[] GetChatThread(string query)
+        public static ChatThreads[] GetChatThread(string query)
         {
             if (query == "Null Context") return null;
 
-            if (query == "Empty chat context") return Array.Empty<ChatThread>();
+            if (query == "Empty chat context") return Array.Empty<ChatThreads>();
 
             if (query == "Empty chats")
             {
-                List<ChatThread> chats = new();
+                List<ChatThreads> chats = new();
                 for (var i = 0; i < 50; i++)
                 {
                     ReceiveContentData data = new();
@@ -36,7 +36,7 @@ namespace PlexShareTests.DashboardTests.Summary
                     data.Data = "";
                     ////data.Type = MessageType.Chat;
                     data.Starred = false;
-                    ChatThread c = new();
+                    ChatThreads c = new();
                     List<ReceiveContentData> ReceiveContentDatas = new();
                     ReceiveContentDatas.Add(data);
                     c.MessageList = ReceiveContentDatas;
@@ -48,10 +48,10 @@ namespace PlexShareTests.DashboardTests.Summary
 
             if (query == "Fixed chat")
             {
-                List<ChatThread> chats = new();
+                List<ChatThreads> chats = new();
                 for (var i = 0; i < 50; i++)
                 {
-                    ChatThread c = new();
+                    ChatThreads c = new();
                     List<ReceiveContentData> ReceiveContentDatas = new();
                     for (var j = 0; j < 5; j++)
                     {
@@ -72,8 +72,8 @@ namespace PlexShareTests.DashboardTests.Summary
 
             if (query == "Variable chat")
             {
-                List<ChatThread> chats = new();
-                ChatThread c = new();
+                List<ChatThreads> chats = new();
+                ChatThreads c = new();
                 // Just to check the working of the Porter Stemmer to obtain the lemmas.
                 List<ReceiveContentData> ReceiveContentDatas = new();
                 ReceiveContentData step1 = new();
@@ -107,11 +107,11 @@ namespace PlexShareTests.DashboardTests.Summary
             }
             else
             {
-                List<ChatThread> chats = new();
+                List<ChatThreads> chats = new();
                 for (var i = 0; i < 50; i++)
                 {
                     // General chat context resembling real application cases.
-                    ChatThread c = new();
+                    ChatThreads c = new();
                     List<ReceiveContentData> ReceiveContentDatas = new();
                     for (var j = 0; j < 5; j++)
                     {

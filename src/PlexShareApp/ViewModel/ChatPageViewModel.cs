@@ -138,7 +138,7 @@ namespace PlexShareApp.ViewModel
 
         public void OnClientSessionChanged(SessionData session)
         {
-            throw new NotImplementedException();
+         //   throw new NotImplementedException();
         }
 
         public void OnMessageReceived(ReceiveContentData contentData)

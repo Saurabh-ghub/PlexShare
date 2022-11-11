@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 
 using Dashboard.Server.Persistence;
+using PlexShareContent.DataModels;
 using PlexShareDashboard.Dashboard.Server.Telemetry;
 
 namespace PlexShareDashboard.Dashboard.Server.Summary

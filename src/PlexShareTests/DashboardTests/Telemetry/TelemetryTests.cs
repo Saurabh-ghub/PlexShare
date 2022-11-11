@@ -540,12 +540,12 @@ namespace PlexShareTests.DashboardTests.Telemetry
             var msgList2 = new List<ReceiveContentData>();
             msgList2.Add(message3);
 
-            var allMessages = new ChatThread[2];
-            var chat1 = new ChatThread();
+            var allMessages = new ChatThreads[2];
+            var chat1 = new ChatThreads();
             chat1.MessageList = msgList1;
 
 
-            var chat2 = new ChatThread();
+            var chat2 = new ChatThreads();
             //chat2.CreationTime = new DateTime(2021, 11, 23, 4, 20, 0);
             chat2.MessageList = msgList2;
 
@@ -594,12 +594,12 @@ namespace PlexShareTests.DashboardTests.Telemetry
             var msgList2 = new List<ReceiveContentData>();
             msgList2.Add(message3);
 
-            var allMessages = new ChatThread[2];
-            var chat1 = new ChatThread();
+            var allMessages = new ChatThreads[2];
+            var chat1 = new ChatThreads();
             chat1.MessageList = msgList1;
 
 
-            var chat2 = new ChatThread();
+            var chat2 = new ChatThreads();
             //chat2.CreationTime = new DateTime(2021, 11, 23, 4, 20, 0);
             chat2.MessageList = msgList2;
 
@@ -648,12 +648,12 @@ namespace PlexShareTests.DashboardTests.Telemetry
             var msgList2 = new List<ReceiveContentData>();
             msgList2.Add(message3);
 
-            var allMessages = new ChatThread[2];
-            var chat1 = new ChatThread();
+            var allMessages = new ChatThreads[2];
+            var chat1 = new ChatThreads();
             chat1.MessageList = msgList1;
 
 
-            var chat2 = new ChatThread();
+            var chat2 = new ChatThreads();
             //chat2.CreationTime = new DateTime(2021, 11, 23, 4, 20, 0);
             chat2.MessageList = msgList2;
 

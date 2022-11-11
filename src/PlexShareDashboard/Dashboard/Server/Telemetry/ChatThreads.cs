@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PlexShareDashboard.Dashboard.Server.Telemetry
 {
-    public class ChatThread
+    public class ChatThreads
     {
         //this is the fake class for the chat thread taken before integration with the chat module 
         /// <summary>
@@ -32,7 +32,7 @@ namespace PlexShareDashboard.Dashboard.Server.Telemetry
         /// <summary>
         /// Constructor to initialize fields
         /// </summary>
-        public ChatThread()
+        public ChatThreads()
         {
             ThreadID = -1;
             CreationTime = new DateTime();

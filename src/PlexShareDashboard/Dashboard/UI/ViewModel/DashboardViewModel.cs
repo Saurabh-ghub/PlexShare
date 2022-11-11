@@ -21,6 +21,10 @@ using Dashboard;
 using System.Diagnostics;
 using LiveCharts.Wpf;
 using LiveCharts;
+using ScottPlot.Drawing.Colormaps;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Windows;
 
 namespace PlexShareDashboard.Dashboard.UI.ViewModel
 {
@@ -511,7 +515,14 @@ namespace PlexShareDashboard.Dashboard.UI.ViewModel
         //function to update the ParticipantsList of viewmodel 
         public void UpdateParticipantsList(List<UserData> users)
         {
-            ParticipantsList.Clear();
+            Application.Current.Dispatcher.Invoke((Action)delegate // <--- HERE
+            {
+                ParticipantsList.Clear();
+                //_matchObsCollection.Add(match);
+            });
+
+            //var uiContext = SynchronizationContext.Current;
+            //uiContext.Send(x => ParticipantsList.Clear(), null);
 
             //using the for loop to push the updated list of the users into participants list 
             foreach (var currUser in users)
@@ -521,7 +532,13 @@ namespace PlexShareDashboard.Dashboard.UI.ViewModel
                 string currUserStatus = "Presenting";
                 User newUser = new User(currUserId, currUserName, currUserStatus);
 
-                ParticipantsList.Add(newUser);
+                Application.Current.Dispatcher.Invoke((Action)delegate // <--- HERE
+                {
+                    //ParticipantsList.Clear();
+                    ParticipantsList.Add(newUser);
+                    //_matchObsCollection.Add(match);
+                });
+                //uiContext.Send(x => ParticipantsList.Add(newUser), null);
 
             }
 
@@ -672,30 +689,33 @@ namespace PlexShareDashboard.Dashboard.UI.ViewModel
         public void OnAnalyticsChanged(SessionAnalytics latestAnalytics)
         {
             //update the analytics of this viewModel
-            sessionAnalytics = latestAnalytics;
-            var chatCount = sessionAnalytics.sessionSummary.chatCount;
-            var userCount = sessionAnalytics.sessionSummary.userCount;
-            sessionAnalytics.sessionSummary.score = chatCount * userCount;
-            var currScore = sessionAnalytics.sessionSummary.score;
+            //sessionAnalytics = latestAnalytics;
+
+            //var chatCount = sessionAnalytics.sessionSummary.chatCount;
+            //var userCount = sessionAnalytics.sessionSummary.userCount;
+            //sessionAnalytics.sessionSummary.score = chatCount * userCount;
+            //var currScore = sessionAnalytics.sessionSummary.score;
+
+            //SessionAnalytics temp = new sessionA
 
 
-            //change the session score only then when the current session score is less 
-            if (currScore > SessionScoreSetter)
-            { 
-                SessionScoreSetter = currScore;
+            ////change the session score only then when the current session score is less 
+            //if (currScore > SessionScoreSetter)
+            //{ 
+            //    SessionScoreSetter = currScore;
             
-            }
+            //}
 
-            //we have to update all the lists so that we can show to the dahsboard
-            UpdateUserCountVsTimeStamp(sessionAnalytics.userCountVsTimeStamp);
-            UpdateUserIdVsChatCount(sessionAnalytics.chatCountForEachUser);
-            CalculateEngagementRate(sessionAnalytics.chatCountForEachUser);
+            ////we have to update all the lists so that we can show to the dahsboard
+            //UpdateUserCountVsTimeStamp(sessionAnalytics.userCountVsTimeStamp);
+            //UpdateUserIdVsChatCount(sessionAnalytics.chatCountForEachUser);
+            //CalculateEngagementRate(sessionAnalytics.chatCountForEachUser);
 
 
-            int currNonAttentiveUsers = sessionAnalytics.listOfInSincereMembers.Count;
-            int currAttentiveUsers = TotalParticipantsCountSetter - currNonAttentiveUsers;
+            //int currNonAttentiveUsers = sessionAnalytics.listOfInSincereMembers.Count;
+            //int currAttentiveUsers = TotalParticipantsCountSetter - currNonAttentiveUsers;
 
-            CalculatePercentageOfAttentiveAndNonAttentiveUsers(currNonAttentiveUsers, currAttentiveUsers);
+            //CalculatePercentageOfAttentiveAndNonAttentiveUsers(currNonAttentiveUsers, currAttentiveUsers);
 
             //say everything went fine 
             return;
